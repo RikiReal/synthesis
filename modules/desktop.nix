@@ -6,6 +6,7 @@
   # This is not the configuration, which is done with home-manager and wayland.windowManager.hyprland
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage =

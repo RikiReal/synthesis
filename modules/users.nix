@@ -4,7 +4,8 @@
   ...
 }:
 {
-  users.defaultUserShell = pkgs.zsh;
+  # Explicitly enable fish shell to add vendor fish completions (NixOS Wiki)
+  programs.fish.enable = true;
 
   users.users.rijad = {
     isNormalUser = true;
@@ -12,9 +13,9 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "i2c" # For brightness control
     ];
-    shell = "/bin/zsh";
-    packages = with pkgs; [ discord-canary ]; # Discord canary supports screen sharing under wayland
+    shell = pkgs.fish;
   };
 
   # Home Manager import for the user.

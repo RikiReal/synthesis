@@ -32,8 +32,20 @@
   # Use kernel optimized for responsiveness
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  # Plymouth (Animated boot screen)
+  boot.plymouth = {
+    enable = true;
+    themePackages = with pkgs; [
+      plymouth-matrix-theme
+    ];
+    theme = "matrix";
+  };
+
   # Enable non-free firmware (e.g. for AMD CPU microcode updates)
   hardware.enableRedistributableFirmware = true;
+
+  # Enable I2C (for brightness control)
+  hardware.i2c.enable = true;
 
   # Networking
   networking.hostName = "desktop";
@@ -44,9 +56,7 @@
   services.printing.enable = true;
 
   # Audio
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -54,12 +64,19 @@
     pulse.enable = true;
   };
 
+  # Fonts
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+    ];
+  };
+
   # Essential packages
   environment.systemPackages = with pkgs; [
     vim
     git
-    zsh
-    zsh-autocomplete
+    fish
     wget
     curl
     btop
