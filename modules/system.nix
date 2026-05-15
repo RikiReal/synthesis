@@ -106,6 +106,9 @@
     variant = "nodeadkeys";
   };
 
+  # Add automount capabilities for removable media
+  services.udisks2.enable = true;
+
   # Timezone and locale
   time.timeZone = "Europe/Vienna";
   i18n.defaultLocale = "en_GB.UTF-8";

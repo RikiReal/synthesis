@@ -80,4 +80,9 @@
     };
   };
 
+  # Automount removable media
+  services.udiskie = {
+    enable = true;
+  };
+
 }
