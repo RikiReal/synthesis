@@ -32,7 +32,7 @@
     # ./decorations.nix
     # ./env.nix
     # ./general.nix
-    # ./input.nix
+    ./input.nix
     # ./misc.nix
     # ./monitor.nix
     # ./windows.nix
