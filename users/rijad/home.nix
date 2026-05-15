@@ -22,12 +22,17 @@
 
   # Packages without further configuration
   home.packages = with pkgs; [
-    mangohud
-    brave
-    kitty-img
+    mangohud # FPS and performance metrics overlay for games
+    brave # Web browser
+    kitty-img # Image viewer for kitty terminal
     ddcutil # For brightness control
     pwvucontrol # Volume control (GUI)
-    discord-canary # Discord canary supports screen sharing under wayland
+    # discord-canary # Discord canary supports screen sharing under wayland
+    webcord # Discord replacement
+    grim # Screenshot tool
+    slurp # Select area to screenshot
+    swappy # Annotate screenshots
+    wl-clipboard # Wayland clipboard utilities
   ];
 
   # Home Manager can also manage your environment variables through

@@ -35,11 +35,23 @@
   # Plymouth (Animated boot screen)
   boot.plymouth = {
     enable = true;
+    extraConfig = ''
+      ShowDelay=0
+    '';
     themePackages = with pkgs; [
       plymouth-matrix-theme
     ];
     theme = "matrix";
   };
+
+  # # Enable "Silent boot"
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  boot.kernelParams = [
+    "quiet"
+    "udev.log_level=3"
+    "systemd.show_status=auto"
+  ];
 
   # Enable non-free firmware (e.g. for AMD CPU microcode updates)
   hardware.enableRedistributableFirmware = true;
@@ -62,6 +74,12 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
+  };
+
+  # Enable hyprlock (or other screen lockers) to unlock the screen
+  security.pam.services.hyprlock = {
+    enable = true;
   };
 
   # Fonts

@@ -2,8 +2,8 @@
 
 {
 
-  # Lock screen
-  programs.swaylock = {
+  # Visual code editor
+  programs.zed-editor = {
     enable = true;
   };
 
@@ -25,11 +25,59 @@
   # Status bar
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
   };
 
-  # Visual code editor
-  programs.zed-editor = {
+  # Wallpaper setter (animated)
+  services.awww = {
     enable = true;
+  };
+
+  # Screen lock
+  programs.hyprlock = {
+    enable = true;
+  };
+
+  # Idle manager
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        before_sleep_cmd = "loginctl lock-session";
+        ignore_dbus_inhibit = false;
+        lock_cmd = "hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 900;
+          on-timeout = "hyprlock";
+        }
+        {
+          timeout = 1200;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
+  };
+
+  # Blue-light filter
+  services.hyprsunset = {
+    enable = true;
+    settings = {
+      profile = [
+        {
+          time = "6:00";
+          identity = true;
+        }
+        {
+          time = "21:00";
+          temperature = 3000;
+        }
+      ];
+    };
   };
 
 }
