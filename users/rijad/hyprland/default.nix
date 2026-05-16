@@ -25,6 +25,6 @@
     ./input.nix
     ./misc.nix
     ./monitor.nix
-    # ./windows.nix
+    ./windows.nix
   ];
 }

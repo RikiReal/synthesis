@@ -343,6 +343,7 @@ in
           _args = [
             "${superKey} + CTRL + ${direction}"
             (lib.generators.mkLuaInline "hl.dsp.window.resize({ x = '${x}', y = '${y}', relative = true })")
+            { repeating = true; }
           ];
         }
         # Group window / Move a window into a group or create a group
