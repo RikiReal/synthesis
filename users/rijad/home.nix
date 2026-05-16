@@ -18,6 +18,7 @@
     ./git.nix
     ./launcher.nix
     ./hyprland
+    ./brightness.nix
   ];
 
   # Packages without further configuration
@@ -33,6 +34,7 @@
     slurp # Select area to screenshot
     swappy # Annotate screenshots
     wl-clipboard # Wayland clipboard utilities
+    nautilus # File manager (GUI)
   ];
 
   # Home Manager can also manage your environment variables through

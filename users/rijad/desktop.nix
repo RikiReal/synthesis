@@ -38,6 +38,11 @@
     enable = true;
   };
 
+  # Command line JSON processor
+  programs.jq = {
+    enable = true;
+  };
+
   # Idle manager
   services.hypridle = {
     enable = true;
@@ -83,6 +88,22 @@
   # Automount removable media
   services.udiskie = {
     enable = true;
+  };
+
+  # Wayland overlay bar (for audio, brightness, etc.)
+  services.wob = {
+    enable = true;
+    settings = {
+      "" = {
+        timeout = 1000;
+        max = 100;
+        anchor = "bottom center";
+        margin = 200;
+        background_color = "1e2030";
+        bar_color = "cad3f5";
+        border_color = "b7bdf8";
+      };
+    };
   };
 
 }
