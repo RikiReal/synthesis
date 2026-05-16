@@ -18,10 +18,9 @@
   };
 
   imports = [
-    # ./animations.nix
+    ./animations.nix
     ./binds.nix
     ./decorations.nix
-    # ./env.nix
     ./general.nix
     ./input.nix
     ./misc.nix
