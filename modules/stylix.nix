@@ -13,6 +13,13 @@
   stylix.cursor.name = "BreezeX-RosePine-Linux";
   stylix.cursor.size = 32;
 
+  stylix.opacity = {
+    popups = 0.9;
+    terminal = 0.7;
+    # desktop = 1;
+    # applications = 0.8;
+  };
+
   stylix.icons = {
     enable = true;
     package = pkgs.rose-pine-icon-theme;

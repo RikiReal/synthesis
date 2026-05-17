@@ -23,7 +23,7 @@
     ./launcher.nix
     ./hyprland
     ./brightness.nix
-    # ./waybar.nix
+    ./waybar.nix
   ];
 
   # Home manager also allows for keybord management

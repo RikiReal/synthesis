@@ -19,6 +19,49 @@
   # Logout screen
   programs.wlogout = {
     enable = true;
+    layout = [
+      {
+        label = "lock";
+        action = "loginctl lock-session";
+        text = "Lock";
+        keybind = "l";
+      }
+
+      {
+        label = "logout";
+        action = "uwsm stop";
+        text = "Logout";
+        keybind = "e";
+      }
+
+      {
+        label = "shutdown";
+        action = "systemctl poweroff";
+        text = "Shutdown";
+        keybind = "s";
+      }
+
+      {
+        label = "suspend";
+        action = "systemctl suspend";
+        text = "Suspend";
+        keybind = "u";
+      }
+
+      {
+        label = "hibernate";
+        action = "systemctl hibernate";
+        text = "Hibernate";
+        keybind = "h";
+      }
+
+      {
+        label = "reboot";
+        action = "systemctl reboot";
+        text = "Reboot";
+        keybind = "r";
+      }
+    ];
   };
 
   # Media Player control

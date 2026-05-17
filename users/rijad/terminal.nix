@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   # Shell
   programs.fish = {
     enable = true;
+    functions = {
+      fish_greeting = {
+        body = "fastfetch";
+      };
+    };
   };
 
   # Terminal
@@ -11,9 +16,9 @@
     enable = true;
     enableGitIntegration = true;
     shellIntegration.enableFishIntegration = true;
-    # settings = {
-
-    # };
+    settings = {
+      window_padding_width = 5;
+    };
   };
 
   # Prompt
@@ -29,8 +34,7 @@
     settings = {
       logo = {
         type = "kitty";
-        # source = "$HOME/.config/fastfetch/icon.png";
-        source = "nixos_small";
+        source = ./assets/oni-mask.png;
         height = 20;
         padding = {
           top = 1;
@@ -86,7 +90,7 @@
   programs.superfile = {
     enable = true;
     settings = {
-      theme = "catppuccin-macchiato";
+      theme = "rose-pine";
     };
   };
 }
