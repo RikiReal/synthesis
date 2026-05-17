@@ -41,7 +41,7 @@
     themePackages = with pkgs; [
       plymouth-matrix-theme
     ];
-    theme = "matrix";
+    # theme = "matrix";
   };
 
   # # Enable "Silent boot"
@@ -85,9 +85,9 @@
   # Fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
-    ];
+    # packages = with pkgs; [
+    #   nerd-fonts.jetbrains-mono
+    # ];
   };
 
   # Essential packages

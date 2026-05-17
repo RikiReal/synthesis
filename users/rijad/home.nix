@@ -12,6 +12,10 @@
   # release notes.
   home.stateVersion = "25.11";
 
+  stylix.targets.hyprland.enable = false; # Hyprland support is currently broken, due to new lua config
+  #stylix.targets.hyprland.colors.enable = false
+  stylix.targets.zed.colors.enable = false; # For some reason it applies a light theme, even though I set the polarity to dark.
+
   imports = [
     ./terminal.nix
     ./desktop.nix
@@ -19,7 +23,19 @@
     ./launcher.nix
     ./hyprland
     ./brightness.nix
+    # ./waybar.nix
   ];
+
+  # Home manager also allows for keybord management
+  # home.keyboard
+
+  # Copy wallpapers to home directory
+  home.file = {
+    "Pictures/Wallpapers" = {
+      source = ./wallpapers;
+      recursive = true;
+    };
+  };
 
   # Packages without further configuration
   home.packages = with pkgs; [
@@ -35,6 +51,7 @@
     swappy # Annotate screenshots
     wl-clipboard # Wayland clipboard utilities
     nautilus # File manager (GUI)
+    timg # Terminal image and video viewer
   ];
 
   # Home Manager can also manage your environment variables through

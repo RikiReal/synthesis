@@ -5,6 +5,10 @@
   # Visual code editor
   programs.zed-editor = {
     enable = true;
+    userSettings = {
+      theme = "Rosé Pine Moon";
+    };
+    extensions = [ "Rosé Pine" ];
   };
 
   # Notification center
@@ -22,14 +26,8 @@
     enable = true;
   };
 
-  # Status bar
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-  };
-
-  # Wallpaper setter (animated)
-  services.awww = {
+  # Hyprland native wallpaper setter
+  services.hyprpaper = {
     enable = true;
   };
 
@@ -99,9 +97,6 @@
         max = 100;
         anchor = "bottom center";
         margin = 200;
-        background_color = "1e2030";
-        bar_color = "cad3f5";
-        border_color = "b7bdf8";
       };
     };
   };

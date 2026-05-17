@@ -14,6 +14,7 @@
       "networkmanager"
       "wheel"
       "i2c" # For brightness control
+      "gamemode" # Adding power scheme management permissions
     ];
     shell = pkgs.fish;
   };
