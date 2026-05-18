@@ -26,5 +26,6 @@
     ./misc.nix
     ./monitor.nix
     ./windows.nix
+    ./xdg.nix
   ];
 }
