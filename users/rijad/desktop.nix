@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
 
@@ -77,6 +77,54 @@
   # Screen lock
   programs.hyprlock = {
     enable = true;
+    settings = {
+      general = {
+        hide_cursor = true;
+      };
+      background = {
+        blur_passes = 2;
+      };
+
+      label = [
+        # Time
+        {
+          monitor = "";
+          text = "$TIME";
+          font_size = 70;
+          # font_family = "${config.lib.stylix.fonts.monospace.name}";
+          color = "rgb(${config.lib.stylix.colors.base05})";
+          position = "0, 7%";
+          halign = "center";
+          valign = "center";
+        }
+        # Media
+        {
+          monitor = "";
+          text = "cmd[update:1000] song-detail";
+          font_size = 14;
+          # font_family = "${config.lib.stylix.fonts.monospace.name}";
+          color = "rgb(${config.lib.stylix.colors.base05})";
+          position = "0, 15%";
+          halign = "center";
+          valign = "bottom";
+        }
+      ];
+
+      image = [
+        # Album art
+        {
+          reload_time = 1;
+          reload_cmd = "album-art";
+          rounding = 15;
+          size = 150;
+          position = "0, 3%";
+          border_color = "rgb(${config.lib.stylix.colors.base0D})";
+          border_size = 2;
+          halign = "center";
+          valign = "bottom";
+        }
+      ];
+    };
   };
 
   # Command line JSON processor

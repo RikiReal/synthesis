@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "rijad";
@@ -22,7 +22,9 @@
     ./git.nix
     ./launcher.nix
     ./hyprland
-    ./brightness.nix
+    ./scripts/brightness.nix
+    ./scripts/song-detail.nix
+    ./scripts/album-art.nix
     ./waybar.nix
   ];
 
@@ -52,6 +54,7 @@
     wl-clipboard # Wayland clipboard utilities
     nautilus # File manager (GUI)
     timg # Terminal image and video viewer
+    pear-desktop # Youtube music wrapper
   ];
 
   # Home Manager can also manage your environment variables through

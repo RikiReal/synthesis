@@ -117,20 +117,29 @@ in
         _args = [
           "XF86AudioRaiseVolume"
           (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm app -- wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk \\'{ if ( index($0, \"MUTE\") ) { print 0 } else { print int($2 * 100) }}\\' > $XDG_RUNTIME_DIR/wob.sock')")
-          { repeating = true; }
+          {
+            repeating = true;
+            locked = true; # Allow volume control during lockscreen
+          }
         ];
       }
       {
         _args = [
           "XF86AudioLowerVolume"
           (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm app -- wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk \\'{ if ( index($0, \"MUTE\") ) { print 0 } else { print int($2 * 100) }}\\' > $XDG_RUNTIME_DIR/wob.sock')")
-          { repeating = true; }
+          {
+            repeating = true;
+            locked = true; # Allow volume control during lockscreen
+          }
         ];
       }
       {
         _args = [
           "XF86AudioMute"
           (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm app -- wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle  && wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk \\'{ if ( index($0, \"MUTE\") ) { print 0 } else { print int($2 * 100) }}\\' > $XDG_RUNTIME_DIR/wob.sock')")
+          {
+            locked = true; # Allow volume control during lockscreen
+          }
         ];
       }
       # The event is called XF86AudioMicMute, but I dont have the key on my keyboard
