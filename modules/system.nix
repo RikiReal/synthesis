@@ -19,7 +19,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
   };
 
   # Automatically detects files with the same content and deduplicates them
@@ -38,10 +38,6 @@
     extraConfig = ''
       ShowDelay=0
     '';
-    themePackages = with pkgs; [
-      plymouth-matrix-theme
-    ];
-    # theme = "matrix";
   };
 
   # # Enable "Silent boot"
@@ -85,9 +81,6 @@
   # Fonts
   fonts = {
     enableDefaultPackages = true;
-    # packages = with pkgs; [
-    #   nerd-fonts.jetbrains-mono
-    # ];
   };
 
   # Essential packages
@@ -99,6 +92,9 @@
     curl
     btop
   ];
+
+  # Hint electron apps to use Wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Keyboard
   services.xserver.xkb = {

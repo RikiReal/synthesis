@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.rofi = {
@@ -10,6 +10,12 @@
       rofi-network-manager
       rofi-calc
     ];
+    # Set layout option of rofi
+    # theme = {
+    # };
+    extraConfig = {
+
+    };
   };
 
   # Qalculate! calculator, powerful, can be used from the terminal or integrated with e.g. rofi
