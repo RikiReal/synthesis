@@ -16,19 +16,14 @@ let
 
     if [ "$1" = "inc" ]; then
         val=$((val + STEP))
-    elif [ "$1" = "off" ]; then
-        val=0
-    elif [ "$1" = "dec" ]; then
+    else
         val=$((val - STEP))
     fi
 
     [ "$val" -gt 100 ] && val=100
     [ "$val" -lt 0 ] && val=0
 
-    if [ "$1" != "off" ]; then
-        echo "$val" > "$STATE_FILE"
-    fi
-
+    echo "$val" > "$STATE_FILE"
     echo "$val" > "$WOB_SOCK"
 
     pkill -f "ddcutil-executor" || true

@@ -22,10 +22,11 @@
     ./git.nix
     ./launcher.nix
     ./hyprland
+    ./wlogout.nix
+    ./waybar.nix
     ./scripts/brightness.nix
     ./scripts/song-detail.nix
     ./scripts/album-art.nix
-    ./waybar.nix
   ];
 
   # Home manager also allows for keybord management

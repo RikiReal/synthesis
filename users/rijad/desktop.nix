@@ -16,54 +16,6 @@
     enable = true;
   };
 
-  # Logout screen
-  programs.wlogout = {
-    enable = true;
-    layout = [
-      {
-        label = "lock";
-        action = "loginctl lock-session";
-        text = "Lock";
-        keybind = "l";
-      }
-
-      {
-        label = "logout";
-        action = "uwsm stop";
-        text = "Logout";
-        keybind = "e";
-      }
-
-      {
-        label = "shutdown";
-        action = "systemctl poweroff";
-        text = "Shutdown";
-        keybind = "s";
-      }
-
-      {
-        label = "suspend";
-        action = "systemctl suspend";
-        text = "Suspend";
-        keybind = "u";
-      }
-
-      {
-        label = "hibernate";
-        action = "systemctl hibernate";
-        text = "Hibernate";
-        keybind = "h";
-      }
-
-      {
-        label = "reboot";
-        action = "systemctl reboot";
-        text = "Reboot";
-        keybind = "r";
-      }
-    ];
-  };
-
   # Media Player control
   services.playerctld = {
     enable = true;
@@ -145,13 +97,8 @@
 
       listener = [
         {
-          timeout = 150; # 2.5 minutes
-          on-timeout = "brightness-handler off";
-          on-resume = "brightness-handler reset";
-        }
-        {
-          timeout = 450; # 7.5 minutes
-          on-timeout = "hyprlock";
+          timeout = 600; # 10 minutes
+          on-timeout = "loginctl lock-session";
         }
         {
           timeout = 1200; # 20 minutes
