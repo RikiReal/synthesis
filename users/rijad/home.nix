@@ -12,8 +12,6 @@
   # release notes.
   home.stateVersion = "25.11";
 
-  stylix.targets.hyprland.enable = false; # Hyprland support is currently broken, due to new lua config
-  #stylix.targets.hyprland.colors.enable = false
   stylix.targets.zed.colors.enable = false; # For some reason it applies a light theme, even though I set the polarity to dark.
 
   imports = [
