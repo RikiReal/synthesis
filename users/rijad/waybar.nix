@@ -22,36 +22,92 @@
         ];
         modules-right = [
           "cava"
+          "wireplumber"
           "cpu"
           "memory"
-          "temperature"
           "disk"
-          "wireplumber"
+          "network"
+          "custom/notifications"
           "tray"
           "custom/power"
         ];
 
-        "custom/power" = {
-          format = "󰐥";
-          tooltip = false;
-          on-click = "wlogout -b 6";
+        "hyprland/workspaces" = {
+          all-outputs = true;
+          format = "{icon}";
+          format-icons = {
+            active = "󰜋";
+            default = "󰜌";
+          };
+          persistent-workspaces = {
+            "*" = 10;
+          };
+        };
+
+        mpris = {
+          format = "{player_icon} {dynamic} {player_icon}";
+          dynamic-order = [
+            "artist"
+            "title"
+            "album"
+          ];
+          dynamic-len = 100;
+          player-icons = {
+            default = "🎵";
+          };
+        };
+
+        "custom/weather" = {
+          format = "{}";
+          interval = 3600;
+          exec = "uwsm app -- curl -s 'https://wttr.in/?format=1'";
+          exec-if = "uwsm app -- ping wttr.in -c1";
+        };
+
+        clock = {
+          format = "{:%H:%M}";
+          format-alt = "{:%A, %B %d, %Y (%R)}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+          };
+
+          actions = {
+            on-click-right = "mode";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
         };
 
         cava = {
-          framerate = 30;
+          actions = {
+            on-click-right = "mode";
+          };
+          framerate = 60;
           autosens = 1;
-          sensitivity = 100;
-          bars = 14;
-          lower_cutoff_freq = 50;
-          higher_cutoff_freq = 10000;
+          sensitivity = 5;
+          bars = 25;
           hide_on_silence = false;
-          method = "pulse";
+          method = "pipewire";
           source = "auto";
           stereo = true;
           reverse = false;
           bar_delimiter = 0;
           waves = false;
-          noise_reduction = 0.77;
+          monstercat = false;
+          noise_reduction = 0.8;
           input_delay = 2;
           format-icons = [
             "▁"
@@ -65,45 +121,72 @@
           ];
         };
 
-        mpris = {
-          format = "{player_icon} {dynamic}";
-          dynamic-order = [
-            "artist"
-            "title"
-            "album"
-          ];
-          dynamic-len = 100;
-          player-icons = {
-            default = "🎵";
-          };
-        };
-
-        clock = {
-          interval = 60;
-          tooltip = false;
-          format = "{:%d-%m / %H:%M}";
-        };
-
         wireplumber = {
-          on_click = "pwvucontrol";
+          on_click = "uwsm app -- pwvucontrol";
+          format = "{volume}% {icon}";
+          format-muted = "";
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
         };
 
-        "custom/weather" = {
-          format = "{}";
-          interval = 3600;
-          exec = "uwsm app -- curl -s 'https://wttr.in/?format=1'";
-          exec-if = "uwsm app -- ping wttr.in -c1";
+        cpu = {
+          format = "{usage}% ";
+          on-click = "uwsm app -- kitty btop";
         };
 
-        # "custom/networkmanager": {
-        #     "exec": "sh PATH_TO_SCRIPT --status --disabled-color \"#f38ba8\" --enabled-color \"#a6e3a1\" | cat",
-        #     "return-type": "raw",
-        #     "format": "{}  ",
-        #     "interval": 3,
-        #     "rotate": 0,
-        #     "on-click": "sh PATH_TO_SCRIPT,
-        #     "tooltip": false
-        # },
+        memory = {
+          format = "{percentage}% ";
+        };
+
+        disk = {
+          format = "{percentage_used}% ";
+        };
+
+        network = {
+          format-ethernet = "󰌘";
+          format-wifi = "{essid} ({signalStrength}%) ";
+          format-disconnected = "󰌙";
+          tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr} 󰌘";
+          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+          tooltip-format-disconnected = "Disconnected";
+          max-length = 50;
+        };
+
+        "custom/notifications" = {
+          tooltip = false;
+          format = "{icon}";
+          format-icons = {
+            notification = "󱅫";
+            none = "󰂚";
+            dnd-notification = "󰂛";
+            dnd-none = "󰂛";
+            inhibited-notification = "󰂠";
+            inhibited-none = "󰂠";
+            dnd-inhibited-notification = "󰂛";
+            dnd-inhibited-none = "󰂛";
+          };
+          return-type = "json";
+          exec-if = "command -v swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          escape = true;
+        };
+
+        tray = {
+          icon-size = 17;
+          spacing = 7;
+        };
+
+        "custom/power" = {
+          format = "󰐥";
+          tooltip = false;
+          on-click = "wlogout -b 6";
+        };
+
       };
     };
   };
