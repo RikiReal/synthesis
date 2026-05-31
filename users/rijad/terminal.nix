@@ -44,15 +44,29 @@
 
       display = {
         separator = ": ";
+        key = {
+          paddingLeft = 3;
+        };
       };
       modules = [
-        "title"
-        "separator"
+        {
+          type = "custom";
+          format = "┌─────────────────────────────────────────────────────────────────┐";
+        }
+        "break"
+        {
+          type = "title";
+          key = "User";
+        }
         "os"
         "kernel"
         "uptime"
         "break"
-
+        {
+          type = "custom";
+          format = "├─────────────────────────────────────────────────────────────────┤";
+        }
+        "break"
         "shell"
         "wm"
         "theme"
@@ -62,14 +76,22 @@
         "terminal"
         "terminalfont"
         "break"
-
+        {
+          type = "custom";
+          format = "├─────────────────────────────────────────────────────────────────┤";
+        }
+        "break"
         "display"
         "cpu"
         "gpu"
         "memory"
         "locale"
         "break"
-
+        {
+          type = "custom";
+          format = "└─────────────────────────────────────────────────────────────────┘";
+        }
+        "break"
         {
           type = "colors";
           symbol = "block";
@@ -81,7 +103,6 @@
             ];
           };
         }
-
       ];
     };
   };
