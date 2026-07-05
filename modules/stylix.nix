@@ -34,13 +34,13 @@
     };
 
     serif = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Serif";
+      package = pkgs.inter;
+      name = "Inter";
     };
 
     sansSerif = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Sans";
+      package = pkgs.inter;
+      name = "Inter";
     };
 
     monospace = {

@@ -4,6 +4,7 @@
 {
 
   stylix.targets.waybar.addCss = false;
+  stylix.targets.waybar.font = "sansSerif"; # Monospaced fonts dont look as good as sansSerif fonts in waybar. because they way icons and glyphs are rendered.
 
   # Status bar
   programs.waybar = {
@@ -20,19 +21,25 @@
           "mpris"
         ];
         modules-center = [
-          "custom/weather"
-          "clock"
+          "group/clock-weather"
         ];
         modules-right = [
-          "cava"
-          "wireplumber"
-          "cpu"
-          "memory"
-          "disk"
-          "network"
+          "group/sound"
+          "group/system"
           "tray"
           "custom/power"
         ];
+
+        "custom/notifications" = {
+          tooltip = false;
+          format = "<span size='xx-large'></span>";
+          return-type = "json";
+          exec-if = "command -v swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          escape = true;
+        };
 
         "hyprland/workspaces" = {
           all-outputs = true;
@@ -57,6 +64,14 @@
           player-icons = {
             default = "🎵";
           };
+        };
+
+        "group/clock-weather" = {
+          orientation = "horizontal";
+          modules = [
+            "custom/weather"
+            "clock"
+          ];
         };
 
         "custom/weather" = {
@@ -91,6 +106,14 @@
             on-scroll-up = "shift_up";
             on-scroll-down = "shift_down";
           };
+        };
+
+        "group/sound" = {
+          orientation = "horizontal";
+          modules = [
+            "cava"
+            "wireplumber"
+          ];
         };
 
         cava = {
@@ -130,12 +153,22 @@
         };
 
         wireplumber = {
-          format = "{volume}% {icon}";
-          format-muted = "{volume}% 󰝟";
+          format = "{volume}% {icon} ";
+          format-muted = "{volume}% 󰖁 ";
           format-icons = [
-            ""
-            ""
-            ""
+            "󰕿"
+            "󰖀"
+            "󰕾"
+          ];
+        };
+
+        "group/system" = {
+          orientation = "horizontal";
+          modules = [
+            "cpu"
+            "memory"
+            "disk"
+            "network"
           ];
         };
 
@@ -162,24 +195,13 @@
           max-length = 50;
         };
 
-        "custom/notifications" = {
-          tooltip = false;
-          format = "";
-          return-type = "json";
-          exec-if = "command -v swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "swaync-client -t -sw";
-          on-click-right = "swaync-client -d -sw";
-          escape = true;
-        };
-
         tray = {
           icon-size = 17;
           spacing = 7;
         };
 
         "custom/power" = {
-          format = "󰐥";
+          format = "<span size='xx-large'>󰐥</span>";
           tooltip = false;
           on-click = "wlogout -b 6";
         };
@@ -191,12 +213,18 @@
         /* Font is set by stylix */
         padding: 0px;
         margin: 0px;
-
+        border: none;
+        border-radius: 0;
+        min-height: 0;
       }
 
       window#waybar {
-        padding: 0px;
-        border-style: none;
+        background-color: @base00;
+      }
+
+      #workspaces button {
+        background: transparent;
+        padding: 0 5px;
       }
 
       #custom-notifications,
@@ -213,12 +241,42 @@
       #tray,
       #custom-power {
         border-style: none;
-
         margin: 0px;
         padding: 0px;
       }
 
-      #workspaces button {
+      #workspaces,
+      #clock-weather,
+      #sound,
+      #system,
+      #tray {
+        background-color: @base01;
+        border: 1px solid @base03;
+        border-radius: 16px;
+        margin: 5px 6px;
+        padding: 2px 16px;
+      }
+
+      #custom-weather {
+        margin-right: 12px;
+      }
+
+      #wireplumber {
+        margin-left: 7px;
+      }
+
+      #cpu, #memory, #disk, #network {
+        margin: 0 7px;
+      }
+
+      #custom-notifications {
+        color: @base0A;
+        margin: 0 7px 0 12px;
+      }
+
+      #custom-power {
+        color: @base0A;
+        margin: 0 12px 0 7px;
       }
     '';
   };
