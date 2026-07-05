@@ -156,14 +156,12 @@ in
         _args = [
           "XF86MonBrightnessUp"
           (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm app -- brightness-handler inc')")
-          { repeating = true; }
         ];
       }
       {
         _args = [
           "XF86MonBrightnessDown"
           (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm app -- brightness-handler dec')")
-          { repeating = true; }
         ];
       }
 

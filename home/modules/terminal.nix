@@ -34,7 +34,7 @@
     settings = {
       logo = {
         type = "kitty";
-        source = ./assets/oni-mask.png;
+        source = ../assets/oni-mask.png;
         height = 20;
         padding = {
           top = 1;

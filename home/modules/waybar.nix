@@ -2,6 +2,9 @@
   ...
 }:
 {
+
+  stylix.targets.waybar.addCss = false;
+
   # Status bar
   programs.waybar = {
     enable = true;
@@ -12,7 +15,7 @@
         height = 30;
 
         modules-left = [
-          # Add small icon here at the start of the bar
+          "custom/notifications"
           "hyprland/workspaces"
           "mpris"
         ];
@@ -27,7 +30,6 @@
           "memory"
           "disk"
           "network"
-          "custom/notifications"
           "tray"
           "custom/power"
         ];
@@ -40,7 +42,7 @@
             default = "󰜌";
           };
           persistent-workspaces = {
-            "*" = 10;
+            "*" = 5;
           };
         };
 
@@ -51,7 +53,7 @@
             "title"
             "album"
           ];
-          dynamic-len = 100;
+          dynamic-len = 60;
           player-icons = {
             default = "🎵";
           };
@@ -92,13 +94,16 @@
         };
 
         cava = {
+          on-click = "uwsm app -- pwvucontrol";
+          # The shape of cava changes depending on the volume level I set in the app? What?
+          # So that means Id have to setup pipewire so that it always sends the noise at the same volume. Equalize it somehow.
           actions = {
             on-click-right = "mode";
           };
           framerate = 60;
-          autosens = 1;
-          sensitivity = 5;
-          bars = 25;
+          autosens = 2; # higher autosens means tighter height range of bars
+          sensitivity = 2;
+          bars = 24; # must be an even number when stereo = true
           hide_on_silence = false;
           method = "pipewire";
           source = "auto";
@@ -107,7 +112,10 @@
           bar_delimiter = 0;
           waves = false;
           monstercat = false;
-          noise_reduction = 0.8;
+          noise_reduction = 0.9; # higher means smoother but slower curves
+          lower_cutoff_freq = 50;
+          higher_cutoff_freq = 10000;
+          sample_rate = 48000;
           input_delay = 2;
           format-icons = [
             "▁"
@@ -122,9 +130,8 @@
         };
 
         wireplumber = {
-          on_click = "uwsm app -- pwvucontrol";
           format = "{volume}% {icon}";
-          format-muted = "";
+          format-muted = "{volume}% 󰝟";
           format-icons = [
             ""
             ""
@@ -157,17 +164,7 @@
 
         "custom/notifications" = {
           tooltip = false;
-          format = "{icon}";
-          format-icons = {
-            notification = "󱅫";
-            none = "󰂚";
-            dnd-notification = "󰂛";
-            dnd-none = "󰂛";
-            inhibited-notification = "󰂠";
-            inhibited-none = "󰂠";
-            dnd-inhibited-notification = "󰂛";
-            dnd-inhibited-none = "󰂛";
-          };
+          format = "";
           return-type = "json";
           exec-if = "command -v swaync-client";
           exec = "swaync-client -swb";
@@ -189,6 +186,41 @@
 
       };
     };
+    style = ''
+      * {
+        /* Font is set by stylix */
+        padding: 0px;
+        margin: 0px;
+
+      }
+
+      window#waybar {
+        padding: 0px;
+        border-style: none;
+      }
+
+      #custom-notifications,
+      #workspaces,
+      #mpris,
+      #custom-weather,
+      #clock,
+      #cava,
+      #wireplumber,
+      #cpu,
+      #memory,
+      #disk,
+      #network,
+      #tray,
+      #custom-power {
+        border-style: none;
+
+        margin: 0px;
+        padding: 0px;
+      }
+
+      #workspaces button {
+      }
+    '';
   };
 
   # Terminal audio visualizer

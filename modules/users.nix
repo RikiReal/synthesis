@@ -24,6 +24,6 @@
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.rijad = import ../users/rijad/home.nix;
+    users.rijad = import ../home/users/rijad/home.nix;
   };
 }

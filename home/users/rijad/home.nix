@@ -15,16 +15,16 @@
   stylix.targets.zed.colors.enable = false; # For some reason it applies a light theme, even though I set the polarity to dark.
 
   imports = [
-    ./terminal.nix
-    ./desktop.nix
     ./git.nix
-    ./launcher.nix
-    ./hyprland
-    ./wlogout.nix
-    ./waybar.nix
-    ./scripts/brightness.nix
-    ./scripts/song-detail.nix
-    ./scripts/album-art.nix
+    ../../modules/hyprland
+    ../../modules/desktop.nix
+    ../../modules/launcher.nix
+    ../../modules/terminal.nix
+    ../../modules/waybar.nix
+    ../../modules/wlogout.nix
+    ../../scripts/brightness.nix
+    ../../scripts/song-detail.nix
+    ../../scripts/album-art.nix
   ];
 
   # Home manager also allows for keybord management
@@ -33,7 +33,7 @@
   # Copy wallpapers to home directory
   home.file = {
     "Pictures/Wallpapers" = {
-      source = ./wallpapers;
+      source = ../../wallpapers;
       recursive = true;
     };
   };

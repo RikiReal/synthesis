@@ -5,7 +5,7 @@
 {
   # Enable styling framework
   stylix.enable = true;
-  stylix.image = ../users/rijad/wallpapers/johnny-porsche.png;
+  stylix.image = ../home/wallpapers/johnny-porsche.png;
   stylix.polarity = "dark";
 
   stylix.cursor.package = pkgs.rose-pine-cursor;
