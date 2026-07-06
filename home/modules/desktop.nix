@@ -14,6 +14,23 @@
   # Notification center
   services.swaync = {
     enable = true;
+    settings = {
+      positionX = "left";
+      hide-on-clear = true;
+      widgets = [
+        "title"
+        "dnd"
+        "mpris"
+        "notifications"
+      ];
+      widget-config = {
+        mpris = {
+          autohide = false;
+          show-album-art = "always";
+          loop-carousel = false;
+        };
+      };
+    };
   };
 
   # Media Player control
