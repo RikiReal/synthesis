@@ -57,6 +57,28 @@
     actual-server # Finance app
   ];
 
+  systemd.user.services = {
+    # Enable the actual-server service on startup
+    actual-server = {
+      Unit = {
+        Description = "Actual Server";
+      };
+
+      Service = {
+        Type = "exec";
+        ExecStart = "${pkgs.actual-server}/bin/actual-server";
+        After = [ "network.target" ];
+        Restart = "always";
+        RestartSec = 5;
+        User = "rijad";
+      };
+
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
+  };
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
