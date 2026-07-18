@@ -54,6 +54,7 @@
     nautilus # File manager (GUI)
     timg # Terminal image and video viewer
     pear-desktop # Youtube music wrapper
+    actual-server # Finance app
   ];
 
   # Home Manager can also manage your environment variables through
