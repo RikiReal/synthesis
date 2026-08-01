@@ -192,6 +192,7 @@
           tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr} 󰌘";
           tooltip-format-wifi = "{essid} ({signalStrength}%) ";
           tooltip-format-disconnected = "Disconnected";
+          on-click = "rofi-network-manager";
           max-length = 50;
         };
 

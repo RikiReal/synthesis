@@ -48,7 +48,7 @@ in
       {
         _args = [
           "${superKey} + SPACE"
-          (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm app -- rofi -show drun')")
+          (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm app -- rofi -show drun -calc-command \"echo -n \\'{result}\\' | wl-copy\" ')")
         ];
       }
       # Toggle dwindle layout

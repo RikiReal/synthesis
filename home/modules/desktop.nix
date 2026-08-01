@@ -25,8 +25,8 @@
       ];
       widget-config = {
         mpris = {
-          autohide = false;
-          show-album-art = "always";
+          autohide = true;
+          show-album-art = "when-available";
           loop-carousel = false;
         };
       };

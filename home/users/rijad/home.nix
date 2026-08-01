@@ -40,6 +40,7 @@
 
   # Packages without further configuration
   home.packages = with pkgs; [
+    rofi-network-manager # Standalone rofi script for managing network connections
     mangohud # FPS and performance metrics overlay for games
     brave # Web browser
     kitty-img # Image viewer for kitty terminal
@@ -55,6 +56,7 @@
     timg # Terminal image and video viewer
     pear-desktop # Youtube music wrapper
     actual-server # Finance app
+    libreoffice-fresh # Office suite
   ];
 
   systemd.user.services = {
