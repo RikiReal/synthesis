@@ -1,5 +1,12 @@
 { inputs, pkgs, ... }:
 
+let
+  sddm-astronaut = (
+    pkgs.sddm-astronaut.override {
+      embeddedTheme = "jake_the_dog";
+    }
+  );
+in
 {
   # Enable cache for Hyprland and its dependencies.
   nix.settings = {
@@ -20,9 +27,15 @@
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  environment.systemPackages = [ sddm-astronaut ];
+
   # Display manager
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
+    extraPackages = with pkgs; [
+      kdePackages.qtmultimedia # Required for video backgrounds/audio
+    ];
+    theme = "sddm-astronaut-theme";
   };
 }
