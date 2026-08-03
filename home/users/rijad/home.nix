@@ -52,6 +52,7 @@
     slurp # Select area to screenshot
     swappy # Annotate screenshots
     wl-clipboard # Wayland clipboard utilities
+    wl-screenrec # Efficient Wayland screen recorder
     nautilus # File manager (GUI)
     timg # Terminal image and video viewer
     pear-desktop # Youtube music wrapper

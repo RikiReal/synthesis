@@ -103,6 +103,13 @@ in
           (lib.generators.mkLuaInline "hl.dsp.exec_cmd('uwsm app -- grim - | swappy -f -')")
         ];
       }
+      # Start a screen recording, uncapped fps, with audio
+      {
+        _args = [
+          "${superKey} + Print"
+          (lib.generators.mkLuaInline "hl.dsp.exec_cmd('pkill -INT wl-screenrec || uwsm app -- wl-screenrec --audio -f ~/Videos/recording_$(date +%Y-%m-%d_%H-%M-%S).mp4')")
+        ];
+      }
       # Lock screen
       {
         _args = [
