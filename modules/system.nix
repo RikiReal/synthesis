@@ -2,7 +2,7 @@
 # Essential system configuration, common to all machines
 ###
 
-{ pkgs, lib, hostName ... }:
+{ pkgs, lib, hostName, ... }:
 
 {
 

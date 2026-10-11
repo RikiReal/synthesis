@@ -7,7 +7,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/system.nix
-    ../../surface-luks-kb-fix.nix
+    ../../modules/surface-luks-kb-fix.nix
     ../../modules/hardware-intel.nix
     ../../modules/windowManager.nix
     ../../modules/users.nix
