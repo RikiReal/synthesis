@@ -11,6 +11,11 @@
 
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-hardware = {
+	url = "github:NixOS/nixos-hardware";
+	inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -20,6 +25,7 @@
       home-manager,
       hyprland,
       stylix,
+      nixos-hardware,
       ...
     }:
     {

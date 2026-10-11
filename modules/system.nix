@@ -2,7 +2,7 @@
 # Essential system configuration, common to all machines
 ###
 
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
 
@@ -30,7 +30,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use kernel optimized for responsiveness
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
 
   # Plymouth (Animated boot screen)
   boot.plymouth = {
