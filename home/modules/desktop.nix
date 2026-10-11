@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, osConfig, ... }:
 
 {
 
@@ -164,5 +164,8 @@
       };
     };
   };
+
+  # Bluetooth manager and applet
+  services.blueman-applet.enable = osConfig.services.blueman.enable or false;
 
 }

@@ -135,7 +135,7 @@
           bar_delimiter = 0;
           waves = false;
           monstercat = false;
-          noise_reduction = 0.9; # higher means smoother but slower curves
+          noise_reduction = 0.7; # higher means smoother but slower curves
           lower_cutoff_freq = 50;
           higher_cutoff_freq = 10000;
           sample_rate = 48000;
@@ -165,10 +165,30 @@
         "group/system" = {
           orientation = "horizontal";
           modules = [
+            "battery"
             "cpu"
             "memory"
             "disk"
             "network"
+          ];
+        };
+
+        battery = {
+          bat = "BAT1";
+          interval = 60;
+          states = {
+            warning = 30;
+            cricitcal = 15;
+          };
+          format = "{capacity}% {icon} ";
+          format-charging = "󰂄 {capacity}% ";
+          format-plugged = " {capacity}% ";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
           ];
         };
 

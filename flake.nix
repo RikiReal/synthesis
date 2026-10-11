@@ -13,8 +13,8 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware = {
-	url = "github:NixOS/nixos-hardware";
-	inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

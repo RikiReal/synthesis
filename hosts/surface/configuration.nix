@@ -12,6 +12,7 @@
     ../../modules/windowManager.nix
     ../../modules/users.nix
     ../../modules/stylix.nix
+    ../../modules/bluetooth.nix
     inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix
     inputs.nixos-hardware.nixosModules.microsoft-surface-common
