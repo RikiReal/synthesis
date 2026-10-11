@@ -10,14 +10,15 @@ let
     /* 6 buttons per row. You have to pass this as an argument on launch (wlogout --buttons-per-row 6) */
 
     button {
+      font-size: 14px;
       background-color: ${colors.base01};
       color: ${colors.base05};
       border: none;
       border-radius: 0px;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: 15%;
-      margin: 15em 0;
+      margin: 7rem 0;
+      background-size: 25%;
       box-shadow: none;
       transition:
           border-radius 0.15s ease,
@@ -26,7 +27,7 @@ let
     }
 
     button:hover {
-      margin: 13em 0;
+      margin: 5rem 0;
       border-radius: 25px;
     }
 
