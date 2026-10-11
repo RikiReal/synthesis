@@ -28,13 +28,19 @@
       nixos-hardware,
       ...
     }:
-    {
-      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+    let
+      mkHost = hostName: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs hostName; };
         modules = [
-          ./hosts/desktop/configuration.nix
+          ./hosts/${hostName}/configuration.nix
         ];
+      };
+    in
+    {
+      nixosConfigurations = {
+        desktop = mkHost "desktop";
+        surface = mkHost "surface";
       };
     };
 }

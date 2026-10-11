@@ -2,7 +2,7 @@
 # Essential system configuration, common to all machines
 ###
 
-{ pkgs, lib, ... }:
+{ pkgs, lib, hostName ... }:
 
 {
 
@@ -56,7 +56,7 @@
   hardware.i2c.enable = true;
 
   # Networking
-  networking.hostName = "desktop";
+  networking.hostName = hostName;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
