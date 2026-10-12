@@ -25,5 +25,12 @@
       };
       float = true;
     }
+    {
+      name = "Brave Extension popups";
+      match = {
+        class = "brave-[a-z]+-Default$";
+      };
+      float = true;
+    }
   ];
 }
