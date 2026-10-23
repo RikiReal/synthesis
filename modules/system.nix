@@ -12,6 +12,13 @@
     "flakes"
   ];
 
+  # Temporary certificate fix until upstream ships updated CA certs
+  security.pki.caCertificateBlacklist = [
+    "Comodo AAA Services root"
+    "emSign ECC Root CA - G3"
+  ];
+
+
   # Allow unfree packages globally
   nixpkgs.config.allowUnfree = true;
 
