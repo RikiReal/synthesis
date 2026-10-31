@@ -18,6 +18,7 @@
     shellIntegration.enableFishIntegration = true;
     settings = {
       window_padding_width = 5;
+      remember_window_size = false;
     };
   };
 
