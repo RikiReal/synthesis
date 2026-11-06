@@ -57,7 +57,7 @@
     timg # Terminal image and video viewer
     pear-desktop # Youtube music wrapper
     actual-server # Finance app
-    libreoffice-fresh # Office suite
+    libreoffice # Office suite
   ];
 
   systemd.user.services = {
@@ -86,6 +86,7 @@
   xdg.enable = true;
   xdg.userDirs.enable = true;
   xdg.userDirs.createDirectories = true;
+  xdg.userDirs.setSessionVariables = false;
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

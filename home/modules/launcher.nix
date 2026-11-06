@@ -12,13 +12,16 @@ in
 
   programs.rofi = {
     enable = true;
-    terminal = "kitty";
-    modes = [
-      "drun"
-      "window"
-      "calc"
-    ];
-    cycle = true;
+    settings = {
+      terminal = "kitty";
+      modes = [
+        "drun"
+        "window"
+        "calc"
+      ];
+      cycle = true;
+
+    };
     plugins = with pkgs; [
       rofi-calc
     ];
