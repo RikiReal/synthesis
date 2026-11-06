@@ -40,24 +40,40 @@
 
   # Packages without further configuration
   home.packages = with pkgs; [
-    rofi-network-manager # Standalone rofi script for managing network connections
-    mangohud # FPS and performance metrics overlay for games
+    # GUI & Desktop Applications
     brave # Web browser
-    kitty-img # Image viewer for kitty terminal
-    ddcutil # For brightness control
-    pwvucontrol # Volume control (GUI)
     # discord-canary # Discord canary supports screen sharing under wayland
     webcord # Discord replacement
+    nautilus # File manager (GUI)
+    pear-desktop # Youtube music wrapper
+    actual-server # Finance app
+    libreoffice # Office suite
+
+    # Audio & Display Management
+    pwvucontrol # Volume control (GUI)
+    ddcutil # For brightness control (external monitor)
+
+    # Gaming & System Monitoring
+    mangohud # FPS and performance metrics overlay for games
+
+    # Screen Capture & Wayland Utilities
     grim # Screenshot tool
     slurp # Select area to screenshot
     swappy # Annotate screenshots
     wl-clipboard # Wayland clipboard utilities
     wl-screenrec # Efficient Wayland screen recorder
-    nautilus # File manager (GUI)
-    timg # Terminal image and video viewer
-    pear-desktop # Youtube music wrapper
-    actual-server # Finance app
-    libreoffice # Office suite
+
+    # Terminal & Image Utilities
+    kitty-img # Image viewer for kitty terminal
+    timg # Terminal image viewer
+
+    # App Launchers & Menus
+    rofi-network-manager # Standalone rofi script for managing network connections
+
+    # Nix Language Servers
+    nil # Nix language server (fast, lightweight syntax and diagnostics)
+    nixd # Alternative Nix language server (deep NixOS options and docs evaluation)
+    nixfmt # Official Nix code formatter
   ];
 
   systemd.user.services = {
