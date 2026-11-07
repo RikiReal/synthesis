@@ -68,6 +68,13 @@
   # Printing
   services.printing.enable = true;
 
+  # Enable GNOME Keyring for secret storage and credentials manager
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+
+  # Enable polkit
+  security.polkit.enable = true;
+
   # Audio
   security.rtkit.enable = true;
   services.pipewire = {
