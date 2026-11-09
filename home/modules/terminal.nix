@@ -115,4 +115,11 @@
       theme = "rose-pine";
     };
   };
+
+  # Environment switcher, per-project config loader
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableFishIntegration = true;
+  };
 }

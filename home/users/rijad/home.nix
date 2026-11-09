@@ -13,7 +13,7 @@
   home.stateVersion = "25.11";
 
   stylix.targets.zed.colors.enable = false; # For some reason it applies a light theme, even though I set the polarity to dark.
-
+  stylix.targets.librewolf.profileNames = ["default"];
   imports = [
     ./git.nix
     ../../modules/hyprland
@@ -41,7 +41,6 @@
   # Packages without further configuration
   home.packages = with pkgs; [
     # GUI & Desktop Applications
-    brave # Web browser
     # discord-canary # Discord canary supports screen sharing under wayland
     webcord # Discord replacement
     nautilus # File manager (GUI)
@@ -52,6 +51,7 @@
     # Audio & Display Management
     pwvucontrol # Volume control (GUI)
     ddcutil # For brightness control (external monitor)
+    brightnessctl
 
     # Gaming & System Monitoring
     mangohud # FPS and performance metrics overlay for games

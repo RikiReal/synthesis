@@ -2,6 +2,17 @@
 
 {
 
+  # Web browser
+  programs.librewolf = {
+    enable = true;
+    profiles = {
+      default = {
+        id = 0;
+        name = "Default";
+      };
+    };
+  };
+
   # Visual code editor
   programs.zed-editor = {
     enable = true;

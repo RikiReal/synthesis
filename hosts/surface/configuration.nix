@@ -17,4 +17,5 @@
     inputs.stylix.nixosModules.stylix
     inputs.nixos-hardware.nixosModules.microsoft-surface-common
   ];
+  hardware.microsoft-surface.kernelVersion = "stable";
 }
