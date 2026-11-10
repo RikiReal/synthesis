@@ -3,7 +3,7 @@
 {
 
   # Web browser
-  programs.librewolf = {
+  programs.firefox = {
     enable = true;
     profiles = {
       default = {
@@ -11,6 +11,7 @@
         name = "Default";
       };
     };
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
 
   # Visual code editor

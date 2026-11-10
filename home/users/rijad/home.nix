@@ -13,7 +13,8 @@
   home.stateVersion = "25.11";
 
   stylix.targets.zed.colors.enable = false; # For some reason it applies a light theme, even though I set the polarity to dark.
-  stylix.targets.librewolf.profileNames = ["default"];
+  stylix.targets.firefox.profileNames = ["default"];
+
   imports = [
     ./git.nix
     ../../modules/hyprland
